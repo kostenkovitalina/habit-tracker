@@ -11,7 +11,7 @@ Imports flow ONLY downward:
 (web) → modules → widgets → features → entities → shared
 
 Architecture details:
-client-architecture.md
+[references/client-architecture.md](references/client-architecture.md)
 
 ---
 
@@ -140,9 +140,20 @@ If rules conflict, apply in order:
 
 ## Related workflows
 
-- Bootstrap project → bootstrap.md
-- Add new slice → scaffolding.md
-- Decide code placement → client-structure.md
-- Code style rules → comments.md
-- Skill lifecycle → lifecycle.md
-- Full architecture → references/client-architecture.md
+- Bootstrap project → [bootstrap.md](../bootstrap.md)
+- Add new slice → [scaffolding.md](../scaffolding.md)
+- Decide code placement → [client-structure.md](../client-structure.md)
+- API conventions → [api-convention.md](../api-convention.md)
+- Code style rules → [comments.md](../comments.md)
+- Skill lifecycle → [lifecycle.md](../lifecycle.md)
+
+---
+
+## References
+
+- [client-architecture.md](references/client-architecture.md) — full architecture summary
+- [layers.md](references/layers.md) — what each layer owns
+- [import-rules.md](references/import-rules.md) — allowed/forbidden imports
+- [naming.md](references/naming.md) — file naming conventions
+- [structure.md](references/structure.md) — full project structure tree
+- [tests.md](references/tests.md) — test layout
