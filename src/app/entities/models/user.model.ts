@@ -1,44 +1,40 @@
-import { boolean, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { useTranslations } from 'next-intl'
+import { z } from 'zod'
 
-export const user = pgTable('user', {
-  id: text('id').primaryKey(),
-  name: text('name').notNull(),
-  email: text('email').notNull().unique(),
-  emailVerified: boolean('email_verified').notNull().default(false),
-  image: text('image'),
-  createdAt: timestamp('created_at').notNull(),
-  updatedAt: timestamp('updated_at').notNull(),
-})
+//interface
+interface IAuthFormTranslate {
+  t: ReturnType<typeof useTranslations<'auth_schema'>>
+}
 
-export const session = pgTable('session', {
-  id: text('id').primaryKey(),
-  expiresAt: timestamp('expires_at').notNull(),
-  ipAddress: text('ip_address'),
-  userAgent: text('user_agent'),
-  userId: text('user_id').notNull().references(() => user.id, { onDelete: 'cascade' }),
-  createdAt: timestamp('created_at').notNull(),
-  updatedAt: timestamp('updated_at').notNull(),
-})
+//login schema
+export const loginSchema = (props: IAuthFormTranslate) => {
+  const { t } = props
 
-export const account = pgTable('account', {
-  id: text('id').primaryKey(),
-  accountId: text('account_id').notNull(),
-  providerId: text('provider_id').notNull(),
-  userId: text('user_id').notNull().references(() => user.id, { onDelete: 'cascade' }),
-  accessToken: text('access_token'),
-  refreshToken: text('refresh_token'),
-  idToken: text('id_token'),
-  expiresAt: timestamp('expires_at'),
-  password: text('password'),
-  createdAt: timestamp('created_at').notNull(),
-  updatedAt: timestamp('updated_at').notNull(),
-})
+  //render
+  return z.object({
+    email: z.email({ message: t('invalidEmail') }),
+    password: z.string().min(10, { message: t('passwordMustBeAtLeast10CharactersLong') }),
+  })
+}
 
-export const verification = pgTable('verification', {
-  id: text('id').primaryKey(),
-  identifier: text('identifier').notNull(),
-  value: text('value').notNull(),
-  expiresAt: timestamp('expires_at').notNull(),
-  createdAt: timestamp('created_at'),
-  updatedAt: timestamp('updated_at'),
-})
+//register schema
+export const registerSchema = (props: IAuthFormTranslate) => {
+  const { t } = props
+
+  //render
+  return z
+    .object({
+      name: z.string().min(1, { message: t('nameIsRequired') }),
+      email: z.email({ message: t('invalidEmail') }),
+      password: z.string().min(10, { message: t('passwordMustBeAtLeast10CharactersLong') }),
+      confirmPassword: z.string().min(1, { message: t('passwordConfirmationIsRequired') }),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      message: t('passwordsDoNotMatch'),
+      path: ['confirmPassword'],
+    })
+}
+
+//type
+export type TRegisterFormValues = z.infer<ReturnType<typeof registerSchema>>
+export type TLoginFormValues = z.infer<ReturnType<typeof loginSchema>>
