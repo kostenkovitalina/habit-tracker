@@ -1,7 +1,7 @@
-import { CreateHabitsModule } from "../../../../../modules/habits/create-habits"
+import { CreateHabitsModule } from '../../../../../modules/habits/create-habits'
 
 const Page = () => {
-    return <CreateHabitsModule/>
+  return <CreateHabitsModule />
 }
 
 export default Page
