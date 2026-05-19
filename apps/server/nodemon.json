@@ -1,0 +1,11 @@
+{
+    "watch": [
+        "src/server.ts",
+        "src/**/*"
+    ],
+    "ignore": [
+        "src/app/(payload)/**"
+    ],
+    "exec": "tsx src/server.ts",
+    "ext": "ts"
+}
