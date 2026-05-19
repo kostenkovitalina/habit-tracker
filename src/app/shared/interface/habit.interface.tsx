@@ -1,9 +1,5 @@
-export type THabitFrequency =
-  | 'daily'
-  | 'weekly'
-  | 'custom'
+export const HABIT_FREQUENCIES = ['daily', 'weekly', 'custom'] as const
 
-export type THabitStatus =
-  | 'active'
-  | 'archived'
-  | 'completed'
+export type THabitFrequency = (typeof HABIT_FREQUENCIES)[number]
+
+export type THabitStatus = 'active' | 'archived' | 'completed'
