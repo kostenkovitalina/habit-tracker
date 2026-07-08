@@ -33,7 +33,7 @@ function AnimatedBeam(props: AnimatedBeamProps) {
     toRef,
     curvature = 0,
     reverse = false,
-    duration = Math.random() * 3 + 4,
+    duration = 5,
     delay = 0,
     pathColor = 'currentColor',
     pathWidth = 1,

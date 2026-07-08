@@ -1,20 +1,8 @@
-import { authServer } from '@/pkg/auth/server'
 import { Link } from '@/pkg/locale'
 import { Button } from '@/pkg/theme/ui/button'
 
-//interface
-interface IUserSession {
-  user?: {
-    name?: string
-  }
-}
-
 //component
 const MainComponent = async () => {
-
-  const session = (await authServer.getSession()) as IUserSession | null
-  const user = session?.user
-
   //render
   return (
     <>
