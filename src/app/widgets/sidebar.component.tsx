@@ -3,47 +3,30 @@
 import * as React from "react"
 
 import {
-    Sidebar,
-    SidebarContent,
-    SidebarGroup,
-    SidebarHeader,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    SidebarMenuSub,
-    SidebarMenuSubButton,
-    SidebarMenuSubItem,
-    SidebarRail,
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarRail
 } from "@/pkg/theme/ui/sidebar"
 import { GalleryVerticalEndIcon } from "lucide-react"
 
 const data = {
   navMain: [
     {
-      title: "Dashboard",
-      url: "/dashboard",
-      items: [
-        { title: "Overview", url: "/dashboard" },
-        { title: "Today", url: "/dashboard/today", isActive: true },
-      ],
-    },
-    {
       title: "Habits",
       url: "/habits",
-      items: [
-        { title: "All Habits", url: "/habits" },
-        { title: "Create Habit", url: "/habits/create" },
-        { title: "Categories", url: "/habits/categories" },
-      ],
     },
     {
-      title: "Progress",
-      url: "/progress",
-      items: [
-        { title: "Streaks", url: "/progress/streaks" },
-        { title: "Calendar", url: "/progress/calendar" },
-        { title: "History", url: "/progress/history" },
-      ],
+      title: "Analytics",
+      url: "/Analytics",
+    },
+    {
+      title: "Reminder",
+      url: "/Reminder",
     },
     {
       title: "Analytics",
@@ -107,19 +90,6 @@ const SidebarComponent = ({ ...props }: React.ComponentProps<typeof Sidebar>) =>
                     {item.title}
                   </a>
                 </SidebarMenuButton>
-
-                {item.items?.length ? (
-                  <SidebarMenuSub>
-                    {item.items.map((item) => (
-                      <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    ))}
-
-                  </SidebarMenuSub>
-                ) : null}
               </SidebarMenuItem>
             ))}
           </SidebarMenu>

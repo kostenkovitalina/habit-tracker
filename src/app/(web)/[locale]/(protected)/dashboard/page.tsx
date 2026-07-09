@@ -1,3 +1,5 @@
+import NewHabbitModules from "@/app/modules/sign/new-habit/new-habbit.module"
+import { SidebarComponent } from "@/app/widgets"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,8 +9,8 @@ import {
   BreadcrumbSeparator,
 } from "@/pkg/theme/ui/breadcrumb"
 import { Separator } from "@/pkg/theme/ui/separator"
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "../../../../../pkg/theme/ui/sidebar"
-import { SidebarComponent } from "../../../../widgets"
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/pkg/theme/ui/sidebar"
+
 
 export default function Page() {
   return (
@@ -38,12 +40,15 @@ export default function Page() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+          {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <div className="aspect-video rounded-xl bg-muted/50" />
             <div className="aspect-video rounded-xl bg-muted/50" />
             <div className="aspect-video rounded-xl bg-muted/50" />
+          </div> */}
+          
+          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min">
+          <NewHabbitModules/>
           </div>
-          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>
