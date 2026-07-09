@@ -39,7 +39,7 @@ const RegisterFormComponent = () => {
       return
     }
 
-    router.push('/dashboard')
+    router.push('/habits')
   }
 
   return (

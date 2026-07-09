@@ -30,7 +30,7 @@ const LoginFormComponent = () => {
       return
     }
 
-    router.push('/dashboard')
+    router.push('/habits')
   }
 
   return (

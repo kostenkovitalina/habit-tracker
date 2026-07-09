@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 
+import { ProtectedLayoutClient } from '@/app/modules/layout'
 import { authServer } from '@/pkg/auth/server'
 
 export default async function ProtectedLayout({
@@ -14,5 +15,14 @@ export default async function ProtectedLayout({
 
   if (!session?.user) redirect(`/${locale}/sign-in`)
 
-  return <>{children}</>
+  const navData = [
+    { title: 'Звички', url: '/habits', icon: 'Home', mobileIcon: '🌿' },
+    { title: 'Аналітика', url: '/analytics', icon: 'BarChart3', mobileIcon: '📊' },
+    { title: 'Цілі', url: '/goals', icon: 'Target', mobileIcon: '🎯' },
+    { title: 'Челенджі', url: '/challenges', icon: 'Award', mobileIcon: '⚡' },
+    { title: 'Нагадування', url: '/reminders', icon: 'Bell', mobileIcon: '🔔' },
+    { title: 'AI Чат', url: '/ai-chat', icon: 'Bot', mobileIcon: '🤖' },
+  ]
+
+  return <ProtectedLayoutClient navData={navData}>{children}</ProtectedLayoutClient>
 }
