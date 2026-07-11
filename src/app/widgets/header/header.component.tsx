@@ -38,9 +38,7 @@ const HeaderComponent = ({ data, children, className }: HeaderProps) => {
         boxShadow: 'rgba(192, 132, 160, 0.133) 0px 2px 20px',
       }}
     >
-      {/* Контейнер по центру з максимальною шириною 1280px та розтягуванням контенту */}
       <div className='flex w-full max-w-[1280px] flex-col items-center px-4'>
-        {/* Верхня панель (логотип + кнопки користувача) */}
         <div className='flex w-full items-center justify-between py-4'>
           <div className='flex items-center gap-3'>
             <div
@@ -79,7 +77,6 @@ const HeaderComponent = ({ data, children, className }: HeaderProps) => {
           </div>
         </div>
 
-        {/* Нижня панель (навігація) */}
         <div className='w-full pb-3'>
           <div
             className='no-scrollbar flex w-full gap-1 overflow-x-auto rounded-2xl p-1'
